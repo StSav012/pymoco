@@ -1,19 +1,11 @@
-standa device and vendors ids
+Standa IDs are
 
-dev.idVendor==0x10c4 and dev.idProduct==0x0230: 
+idVendor==0x10c4 and idProduct==0x0230:
 
-create a file called 50-standa.rules in /etc/udev/rules.d containing
+Create a file called 50-standa.rules in /etc/udev/rules.d containing
 
 -----------
-SUBSYSTEM !="usb_device", ACTION !="add", GOTO="standa_rules_end"
-
-SYSFS{idVendor} =="10c4", SYSFS{idProduct} =="0230", SYMLINK+="standa"
-
-MODE="0666", OWNER="username", GROUP="root"
-
-LABEL="standa_rules_end"
+SUBSYSTEM=="usb", ATTR{idVendor}=="10c4", ATTR{idProduct}=="0230", SYMLINK+="standa", MODE="0666"
 -----------
 
-where username is your username
-
-this allow any user to use the .....
+This allow any user to use the device.
