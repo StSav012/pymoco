@@ -194,7 +194,7 @@ class Standa:
         self._fpark()
 
         # which side to park
-        move = 10000000 if motor_side else -10000000
+        pos: int = 10000000 if motor_side else -10000000
 
         self.set_current_position(0)
         # The delays in the wait are needed, because sometimes the run
@@ -202,10 +202,10 @@ class Standa:
         # TODO: Check for a flush for the USB
         self.wait(0.1)
 
-        self.move(move, div=div, speed=speed)
+        self.move(pos, div=div, speed=speed)
         self.wait(0.1)  # wait checking for the trailers
 
-        self.move(-move, div=1, speed=128)
+        self.move(-pos, div=1, speed=128)
 
         while any(self.get_trailer()):
             pass

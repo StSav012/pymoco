@@ -48,11 +48,11 @@ class State(EasyStruct):
         self.s1: int = 0
         self.s2: int = 0
         self.cur_pos: int = 0
-        self.temp: int = 0
-        self.voltage: int = 0
+        self.temp: float = 0.0
+        self.voltage: float = 0.0
 
         structdef: Collection[StructDefItem] = [
-            StructDefItem("cur_pos", "i", 0x00, lambda x: x * 8, lambda x: x / 8),
+            StructDefItem("cur_pos", "i", 0x00, lambda x: x * 8, lambda x: x // 8),
             StructDefItem("temp", "H", 0x00, write_temperature, read_temperature),
             StructDefItem("s0", "B", 0x00, None, None),
             StructDefItem("s1", "B", 0x00, None, None),
