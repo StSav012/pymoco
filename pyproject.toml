@@ -10,6 +10,19 @@ dependencies = ["pyusb"]
 [project.urls]
 homepage = 'https://code.google.com/p/pymoco/'
 
+[build-system]
+requires = ["setuptools >= 65.5.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = [
+    "easystruct.py",
+    "standa.py",
+    "standa_types.py",
+    "utils.py"
+]
+namespaces = false
+
 [tool.ruff.lint]
 fixable = ["ALL"]
 unfixable = []
