@@ -216,7 +216,7 @@ class Standa:
 
     def wait(self, timeout: float = 0.1) -> None:
         """Wait time seconds and then until the translation stage stops."""
-        if time:
+        if timeout > 0.0:
             time.sleep(timeout)
         while self.get_state().running:
             if any(self.get_trailer()):
