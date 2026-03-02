@@ -5,7 +5,7 @@ license = "BSD-3-Clause"
 description = "Python wrapper for motion controller drivers"
 readme = "README.md"
 requires-python = ">=3.12"
-url = 'https://code.google.com/p/pymoco/'
+HomePage = 'https://code.google.com/p/pymoco/'
 dependencies = ["pyusb"]
 
 [tool.ruff.lint]
