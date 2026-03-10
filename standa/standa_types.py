@@ -1,7 +1,6 @@
 import struct
 from array import array
 from collections.abc import Collection, Iterable
-from functools import partial
 from math import exp, log
 
 from .easystruct import EasyStruct, StructDefItem
@@ -260,57 +259,103 @@ class Mode(EasyStruct):
         else:
             self.b2 &= ~mask
 
-    buttons_off = property(lambda self: get_bit(self.b0, 0), partial(p0bs, index=0))
-    refine_enabled = property(lambda self: get_bit(self.b0, 1), partial(p0bs, index=1))
-    reset_power = property(lambda self: get_bit(self.b0, 2), partial(p0bs, index=2))
-    emergency_reset = property(lambda self: get_bit(self.b0, 3), partial(p0bs, index=3))
-    trailer_1_state = property(lambda self: get_bit(self.b0, 4), partial(p0bs, index=4))
-    trailer_2_state = property(lambda self: get_bit(self.b0, 5), partial(p0bs, index=5))
+    buttons_off = property(
+        lambda self: get_bit(self.b0, 0),
+        lambda self, value: self.p0bs(index=0, value=value),
+    )
+    refine_enabled = property(
+        lambda self: get_bit(self.b0, 1),
+        lambda self, value: self.p0bs(index=1, value=value),
+    )
+    reset_power = property(
+        lambda self: get_bit(self.b0, 2),
+        lambda self, value: self.p0bs(index=2, value=value),
+    )
+    emergency_reset = property(
+        lambda self: get_bit(self.b0, 3),
+        lambda self, value: self.p0bs(index=3, value=value),
+    )
+    trailer_1_state = property(
+        lambda self: get_bit(self.b0, 4),
+        lambda self, value: self.p0bs(index=4, value=value),
+    )
+    trailer_2_state = property(
+        lambda self: get_bit(self.b0, 5),
+        lambda self, value: self.p0bs(index=5, value=value),
+    )
     rotary_transducer_state = property(
-        lambda self: get_bit(self.b0, 6), partial(p0bs, index=6)
+        lambda self: get_bit(self.b0, 6),
+        lambda self, value: self.p0bs(index=6, value=value),
     )
     trailers_swapped = property(
-        lambda self: get_bit(self.b0, 7), partial(p0bs, index=7)
+        lambda self: get_bit(self.b0, 7),
+        lambda self, value: self.p0bs(index=7, value=value),
     )
 
     trailer_1_enabled = property(
-        lambda self: get_bit(self.b1, 0), partial(p1bs, index=0)
+        lambda self: get_bit(self.b1, 0),
+        lambda self, value: self.p1bs(index=0, value=value),
     )
     trailer_2_enabled = property(
-        lambda self: get_bit(self.b1, 1), partial(p1bs, index=1)
+        lambda self: get_bit(self.b1, 1),
+        lambda self, value: self.p1bs(index=1, value=value),
     )
     rotary_transducer_enabled = property(
-        lambda self: get_bit(self.b1, 2), partial(p1bs, index=2)
+        lambda self: get_bit(self.b1, 2),
+        lambda self, value: self.p1bs(index=2, value=value),
     )
     rotary_transducer_stop_on_error = property(
-        lambda self: get_bit(self.b1, 3), partial(p1bs, index=3)
+        lambda self: get_bit(self.b1, 3),
+        lambda self, value: self.p1bs(index=3, value=value),
     )
-    button_1_state = property(lambda self: get_bit(self.b1, 4), partial(p1bs, index=4))
-    button_2_state = property(lambda self: get_bit(self.b1, 5), partial(p1bs, index=5))
-    buttons_swapped = property(lambda self: get_bit(self.b1, 6), partial(p1bs, index=6))
+    button_1_state = property(
+        lambda self: get_bit(self.b1, 4),
+        lambda self, value: self.p1bs(index=4, value=value),
+    )
+    button_2_state = property(
+        lambda self: get_bit(self.b1, 5),
+        lambda self, value: self.p1bs(index=5, value=value),
+    )
+    buttons_swapped = property(
+        lambda self: get_bit(self.b1, 6),
+        lambda self, value: self.p1bs(index=6, value=value),
+    )
     reset_rotary_transducer = property(
-        lambda self: get_bit(self.b1, 7), partial(p1bs, index=7)
+        lambda self: get_bit(self.b1, 7),
+        lambda self, value: self.p1bs(index=7, value=value),
     )
 
     sync_out_enabled = property(
-        lambda self: get_bit(self.b2, 0), partial(p2bs, index=0)
+        lambda self: get_bit(self.b2, 0),
+        lambda self, value: self.p2bs(index=0, value=value),
     )
-    sync_out_reset = property(lambda self: get_bit(self.b2, 1), partial(p2bs, index=1))
+    sync_out_reset = property(
+        lambda self: get_bit(self.b2, 1),
+        lambda self, value: self.p2bs(index=1, value=value),
+    )
     sync_in_single_move = property(
-        lambda self: get_bit(self.b2, 2), partial(p2bs, index=2)
+        lambda self: get_bit(self.b2, 2),
+        lambda self, value: self.p2bs(index=2, value=value),
     )
     sync_out_polarity = property(
-        lambda self: get_bit(self.b2, 3), partial(p2bs, index=3)
+        lambda self: get_bit(self.b2, 3),
+        lambda self, value: self.p2bs(index=3, value=value),
     )
-    encoder_enabled = property(lambda self: get_bit(self.b2, 4), partial(p2bs, index=4))
+    encoder_enabled = property(
+        lambda self: get_bit(self.b2, 4),
+        lambda self, value: self.p2bs(index=4, value=value),
+    )
     encoder_counter_inverted = property(
-        lambda self: get_bit(self.b2, 5), partial(p2bs, index=5)
+        lambda self: get_bit(self.b2, 5),
+        lambda self, value: self.p2bs(index=5, value=value),
     )
     reset_encoder_counter = property(
-        lambda self: get_bit(self.b2, 6), partial(p2bs, index=6)
+        lambda self: get_bit(self.b2, 6),
+        lambda self, value: self.p2bs(index=6, value=value),
     )
     reset_sm_to_encoder = property(
-        lambda self: get_bit(self.b2, 7), partial(p2bs, index=7)
+        lambda self: get_bit(self.b2, 7),
+        lambda self, value: self.p2bs(index=7, value=value),
     )
 
     def __repr__(self) -> str:
