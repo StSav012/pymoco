@@ -16,12 +16,8 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = [
-    "easystruct.py",
-    "standa.py",
-    "standa_types.py",
-    "utils.py"
+    "standa",
 ]
-namespaces = false
 
 [tool.ruff.lint]
 fixable = ["ALL"]

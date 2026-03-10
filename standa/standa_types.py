@@ -4,8 +4,8 @@ from collections.abc import Collection, Iterable
 from functools import partial
 from math import exp, log
 
-from easystruct import EasyStruct, StructDefItem
-from utils import byte, clamp, get_bit, pack_dword, pack_word, word
+from .easystruct import EasyStruct, StructDefItem
+from .utils import byte, clamp, get_bit, pack_dword, pack_word, word
 
 __all__ = ["State", "Serial", "EncoderState", "Mode", "Parameters"]
 

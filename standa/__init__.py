@@ -6,13 +6,13 @@ from typing import Literal
 
 import usb
 
-from standa_types import (
+from .standa_types import (
     EncoderState,
     Mode,
     Parameters,
     State,
 )
-from utils import (
+from .utils import (
     first_word,
     first_word_swapped,
     goto_data,
